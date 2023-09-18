@@ -1,0 +1,57 @@
+.trStudent:hover{
+    background-color: aquamarine;
+    cursor: pointer;
+}
+
+.thongTinSinhVien form .form-group {
+    margin: 10px 0;
+}
+
+.thongTinSinhVien form .form-group label {
+    margin-bottom: 5px;
+}
+
+.btn_searchSV {
+    margin-left: 5px !important;
+}
+
+.inputHoTen {
+    border-radius: 0.5rem !important;
+}
+
+#TableSinhVien {
+    text-align: center;
+}
+
+#TableSinhVien #options i+i{
+    margin-left: 10px;
+}
+
+#TableSinhVien #options i {
+    opacity: .5;
+}
+
+#TableSinhVien #options i:hover {
+    opacity: 1;
+}
+
+#addStudentBtn {
+    margin: 1rem 0;
+}
+
+#key {
+    margin: 1rem 0;
+}
+
+hr {
+    color: red;
+    border-top: 5px solid;
+}
+
+.searchStu, .searchClass {
+    align-items: center;
+}
+
+#tableClass tr th {
+    text-align: center;
+}

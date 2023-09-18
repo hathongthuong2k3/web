@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Student</title>
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- BS5 CSS -->
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+
+<body>
+
+    <body>
+        <div class="logo"></div>
+        <!-- Table class -->
+        <div class="container">
+            <div class="right">
+                <div class="input-group searchClass">
+                    <input type="text" id="key" onkeyup="searchClass()" onchange="TimKiemLopHoc()"
+                        class="form-control inputHoTen" placeholder="Nhập vào tên lớp">
+                    <span class="input-group-btn btn_searchClass">
+                        <button id="searchClassBtn" class="btn btn-secondary" onclick="searchClass()"
+                            type="button">Tìm kiếm</button>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#formAddClass">
+                            Thêm lớp học
+                        </button>
+                    </span>
+                </div>
+                <br />
+                <!-- <div class="alert alert-success" id="ThongBao"></div> -->
+            </div>
+            <h2 class="text-center text-uppercase">Danh sách lớp học</h2>
+            <table id="tableClass" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Lớp</th>
+                        <th>Sĩ số</th>
+                        <th>GVCN</th>
+                        <th>Khóa</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodyClass">
+                </tbody>
+            </table>
+        </div>
+        <!--Table student -->
+        <div class="container d-none">
+            <div class="right">
+                <div class="input-group searchStu">
+                    <input type="text" id="key" onkeyup="searchStudent()" onchange="TimKiemSinhVien()"
+                        class="form-control inputHoTen" placeholder="Nhập vào họ tên">
+                    <span class="input-group-btn btn_searchSV">
+                        <button id="searchStudentBtn" class="btn btn-secondary" onclick="searchStudent()"
+                            type="button">Tìm kiếm</button>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-success" data-bs-toggle="modal"
+                            data-bs-target="#formAddStudent">
+                            Thêm sinh viên
+                        </button>
+                    </span>
+                </div>
+                <br />
+                <!-- <div class="alert alert-success" id="ThongBao"></div> -->
+            </div>
+            <h2 class="text-center text-uppercase">Danh sách sinh viên</h2>
+            <table id="TableSinhVien" class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Họ tên</th>
+                        <th>Mã số SV</th>
+                        <th>Email</th>
+                        <th>CCCD</th>
+                        <th>Điện thoại</th>
+                        <th>Điểm TB</th>
+                        <th>Xếp loại</th>
+                        <th>Tùy chọn</th>
+                    </tr>
+                </thead>
+                <tbody id="tbodySinhVien">
+                </tbody>
+            </table>
+
+        </div>
+        <!-- Modal add student-->
+        <div class="modal fade" id="formAddStudent" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="my-3 text-center text-uppercase">Thông tin sinh viên</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container thongTinSinhVien">
+                            <form>
+                                <div class="form-group">
+                                    <label for="hoTen">Họ tên:</label>
+                                    <input type="text" class="form-control" id="hoTen" placeholder="Nhập Họ tên"
+                                        name="Họ tên">
+                                </div>
+                                <div class="form-group">
+                                    <label for="maSo">Mã số SV:</label>
+                                    <input type="text" class="form-control" id="maSo" placeholder="Nhập MSSV"
+                                        name="MSSV">
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input type="email" class="form-control" id="email" placeholder="Nhập Email"
+                                        name="Email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Điện thoại:</label>
+                                    <input type="text" class="form-control" id="phone" placeholder="Nhập SDT"
+                                        name="Điện thoại">
+                                </div>
+                                <div class="form-group">
+                                    <label for="CCCD">CCCD:</label>
+                                    <input type="text" class="form-control" id="CCCD" placeholder="Nhập CMND"
+                                        name="CCCD">
+                                </div>
+                                <div class="form-group">
+                                    <label for="diemToan">Điểm Toán:</label>
+                                    <input type="number" class="form-control" id="diemToan" placeholder="Nhập điểm Toán"
+                                        name="Điểm Toán">
+                                </div>
+                                <div class="form-group">
+                                    <label for="diemLy">Điểm Lý:</label>
+                                    <input type="number" class="form-control" id="diemLy" placeholder="Nhập điểm Lý"
+                                        name="Điểm Lý">
+                                </div>
+                                <div class="form-group">
+                                    <label for="diemHoa">Điểm Hóa:</label>
+                                    <input type="number" class="form-control" id="diemHoa" placeholder="Nhập điểm Hóa"
+                                        name="Điểm Hóa">
+                                </div>
+                            </form>
+                            <!-- <div style="float: right;">
+                            <button class="btn btn-success" onclick="setStorage()">Lưu storage</button>
+                            <button class="btn btn-primary" onclick="getStorage()">Lấy storage</button>
+                            <button class="btn btn-danger" onclick="removeStudents()">Xóa sinh viên</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="addStudentBtn">Thêm</button>
+                        <button type="button" class="btn btn-primary saveInfo" id="saveInfoBtn" style="display: none;">
+                            Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal add class-->
+        <div class="modal fade" id="formAddClass" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="my-3 text-center text-uppercase">Thông tin lớp học</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container thongTinLopHoc">
+                            <form>
+                                <div class="form-group">
+                                    <label for="lopHoc">Lớp:</label>
+                                    <input type="text" class="form-control" id="lopHoc" placeholder="Nhập tên lớp"
+                                        name="Lớp học">
+                                </div>
+                                <div class="form-group">
+                                    <label for="siSo">Sĩ số:</label>
+                                    <input type="text" class="form-control" id="siSo" placeholder="Nhập sĩ số lớp học"
+                                        name="Sĩ số">
+                                </div>
+                                <div class="form-group">
+                                    <label for="GVCN">GVCN:</label>
+                                    <input type="email" class="form-control" id="GVCN" placeholder="Nhập tên GVCN"
+                                        name="GVCN">
+                                </div>
+                                <div class="form-group">
+                                    <label for="khoa">Khóa:</label>
+                                    <input type="text" class="form-control" id="khoa" placeholder="Nhập niên khóa"
+                                        name="Khóa">
+                                </div>
+                            </form>
+                            <!-- <div style="float: right;">
+                            <button class="btn btn-success" onclick="setStorage()">Lưu storage</button>
+                            <button class="btn btn-primary" onclick="getStorage()">Lấy storage</button>
+                            <button class="btn btn-danger" onclick="removeStudents()">Xóa sinh viên</button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" id="addStudentBtn">Thêm</button>
+                        <button type="button" class="btn btn-primary saveInfo" id="saveInfoBtn" style="display: none;">
+                            Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- JQUERY JS -->
+        <script type="text/javascript" src="./js/jquery-3.6.3.min.js"></script>
+
+        <!-- POPPER JS -->
+        <script type="text/javascript" src="./js/popper.min.js"></script>
+
+        <!-- BS5 JS -->
+        <script type="text/javascript" src="./js/bootstrap.min.js"></script>
+
+        <!-- <script src="./models/Student.js"></script>
+        <script src="./models/ListOfStudents.js"></script>
+        <script src="./models/Validation.js"></script> -->
+
+        <!-- MAIN JS -->
+        <script type="module" src="./js/main.js"></script>
+    </body>
+
+</html>
